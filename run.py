@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 
 # import data
-strava = pd.read_csv("Strava Data.csv")
+strava = pd.read_csv("StravaData.csv")
 df = pd.DataFrame(strava)
 
 def speed(col):
