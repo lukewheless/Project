@@ -5,8 +5,10 @@ import numpy as np
 strava = pd.read_csv("StravaData.csv")
 df = pd.DataFrame(strava)
 
+df['Ave_Pace'] = (df['Time']/df['Distance (m)'])
+
 def speed(col):
-    if col['avg_pace'] >= 07:10:
+    if col['Ave_Pace'] >= 7:
         return "Fast"
     else:
         return "Slow"
@@ -14,11 +16,11 @@ def speed(col):
 df['Speed'] = df.apply(speed, axis=1)
 
 # extracting seconds from time  
-df['seconds'] = df['Time'].dt.second
-df['avg_seconds'] = df['Avg. Pace'].dt.second
+df['Seconds'] = df['Time'].dt.second
+df['Avg_Seconds'] = df['avg_pace'].dt.second
 
 # displaying DataFrame with new seconds columns
-display(df)
+print(df)
 
 # moving df to a new csv
-df.to_csv("Strava.csv")
+#df.to_csv("Strava.csv")
