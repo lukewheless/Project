@@ -1,4 +1,4 @@
-,Date,Time,Distance (mi),Elevation (ft),Time (min),Avg_Pace,Total_Seconds,Speed
+,Date,Time,Distance (min),Elevation (ft),Time (min),Avg_Pace,Total_Seconds,Speed
 0,7/15/20,0:32:24,3.82,53,32.4,8,1944,Slow
 1,7/17/20,0:06:00,1.06,27,6,6,360,Fast
 2,7/18/20,2:12:12,7.55,"1,139",132.2,18,7932,Slow
