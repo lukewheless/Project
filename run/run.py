@@ -5,14 +5,14 @@ strava = pd.read_csv("StravaData.csv")
 df = pd.DataFrame(strava)
 
 # Cleaning up column names
-df = df.rename(columns={"Distance (m)": "Distance", "Elevation (ft)": "Elevation"})
+df = df.rename(columns={"Distance (mi)": "Distance", "Elevation (ft)": "Elevation"})
 
 # Converting minutes
 df['time'] = pd.to_timedelta(df['Time'])
 df['time'] = (df['Time'] / pd.offsets.Minute(1)).round(2)
 
 # Adding new columns to dataset
-df['Avg_Pace'] = (df['time'] / df['Distance']).round(0)
+df['Avg_Pace'] = (df['time'] / df['Distance']).round(1)
 
 # Extracting seconds from minutes 
 df['Total_Seconds'] = (df['time']*60).round(0)
