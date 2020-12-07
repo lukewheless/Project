@@ -28,4 +28,4 @@ df['Speed'] = df.apply(speed, axis=1)
 
 # Assigning df to a new csv
 print(df)
-#df.to_csv("Strava_Data.csv")
+df.to_csv("Strava_Data.csv")
