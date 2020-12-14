@@ -4,24 +4,31 @@ import json
 in_file = open("Playlist1.json", "r")
 spotify = json.load(in_file)
 
-playlist = spotify["playlists"][0] #grabs playlist by order [0-13]
+for playlist in spotify["playlists"]:
 
-items = playlist["items"]
+    names = playlist["name"]
+    items = playlist["items"]
 
-tracks,artists,names = [],[],[]
+    tracks,artists,album = [],[],[]
 
-for i in items:
-    for value, key in i["track"].items():
-        if value == "trackName":
-            tracks.append(key)
-        if value == "artistName":
-            artists.append(key) 
-        if value == "albumName":
-            names.append(key)
+    for item in items:
+        for value, key in item["track"].items():
+            if value == "trackName":
+                tracks.append(key)
+            if value == "artistName":
+                artists.append(key) 
+            if value == "albumName":
+                album.append(key)
 
-df = pd.DataFrame(tracks, columns= ['Tracks'])
-df['Artists'] = artists
-df['Albums'] = names
+    df = pd.DataFrame(tracks, columns= ['Tracks'])
+    index = df.index
+    index.name = names
+    df['Artists'] = artists
+    df['Albums'] = album
 
-print(df)
-#df.to_csv("Spotify_Data.csv")
+    print(df) 
+
+#with open('Spotify_Playlists.csv', 'w') as f:
+    #pd.concat([df], axis=0).to_csv(f, header=False)
+              
+    #df.to_csv("Spotify_Playlists.csv")
