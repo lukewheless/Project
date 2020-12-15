@@ -4,7 +4,7 @@ import json
 in_file = open("Playlist1.json", "r")
 spotify = json.load(in_file)
 
-playlist = spotify["playlists"][1] # grabs playlist [0-13]
+playlist = spotify["playlists"][2] # grabs playlist [0-13]
 names = playlist["name"]
 items = playlist["items"]
 
@@ -27,4 +27,4 @@ df['Albums'] = album
 
 print(df)
 
-df.to_csv("Spotify_Data_Playlist2.csv")
+#df.to_csv("Spotify_Data_Playlist.csv")
