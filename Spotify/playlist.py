@@ -1,7 +1,7 @@
 import pandas as pd
 import json
 
-in_file = open("Playlist1.json", "r")
+in_file = open("Playlists.json", "r")
 spotify = json.load(in_file)
 
 playlist = spotify["playlists"][0] # grabs playlist [0-13]

@@ -1,15 +1,16 @@
 import pandas as pd
 import json
 
-in_file = open("Playlist1.json", "r")
+in_file = open("Playlists.json", "r")
 spotify = json.load(in_file)
 
-for playlist in spotify["playlists"]:
+for playlist in spotify["playlists"]: # [:10] top ten
     names = playlist["name"]
     items = playlist["items"]
     tracks,artists,album = [],[],[]
     #while names != "hype":
     
+    #if names != "hype":
     for item in items:
         for value, key in item["track"].items():
             if value == "trackName":
