@@ -1,16 +1,16 @@
 import pandas as pd
+from pandas import ExcelWriter
 import json
 
 in_file = open("Playlists.json", "r")
 spotify = json.load(in_file)
+writer = pd.ExcelWriter("Top_Ten_Playlists.xlsx", engine='xlsxwriter')
 
 for playlist in spotify["playlists"]: # [:10] top ten
     names = playlist["name"]
     items = playlist["items"]
     tracks,artists,album = [],[],[]
-    #while names != "hype":
-    
-    #if names != "hype":
+
     for item in items:
         for value, key in item["track"].items():
             if value == "trackName":
@@ -20,15 +20,12 @@ for playlist in spotify["playlists"]: # [:10] top ten
             if value == "albumName":
                 album.append(key)
 
-    df = pd.DataFrame(tracks, columns= ['Tracks'])
-    index = df.index
-    index.name = names
-    df['Artists'] = artists
-    df['Albums'] = album
+                df1 = pd.DataFrame(tracks, columns= ['Tracks'])
+                index = df1.index
+                index.name = names
+                df1['Artists'] = artists
+                df1['Albums'] = album
+    print(df1)
+    df1.to_excel(writer, sheet_name=names)
 
-    print(df) 
-
-#with open('Spotify_Playlists.csv', 'w') as f:
-    #pd.concat([df], axis=0).to_csv(f, header=False)
-              
-#df.to_csv("Spotify_Playlists.csv")
+writer.save() 
