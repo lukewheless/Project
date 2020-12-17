@@ -4,7 +4,7 @@ import json
 in_file = open("Playlist1.json", "r")
 spotify = json.load(in_file)
 
-playlist = spotify["playlists"][2] # grabs playlist [0-13]
+playlist = spotify["playlists"][0] # grabs playlist [0-13]
 names = playlist["name"]
 items = playlist["items"]
 
